@@ -1,5 +1,6 @@
 import Trending from './(Home)/Trending'
 import Tech from './(Home)/Tech'
+import Travel from './(Home)/Travel';
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       <div className="md:flex gap-10 mb-5">
         <div className="basis-3/4">
           <Tech/>
-          {/* <Travel/> */}
+          <Travel/>
           {/* <Other/> */}
           <div className="hidden md:block">
             {/* <Subscribe/> */}
