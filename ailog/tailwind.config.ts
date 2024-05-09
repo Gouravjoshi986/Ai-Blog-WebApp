@@ -16,8 +16,8 @@ const config: Config = {
         "wh-500":"#595959",
         "wh-900":"#0F0F0F",
         "accent-red":"#EA9648",
-        "accent-green":"#F6CF68",
-        "accent-orange":"#C2E9B4",
+        "accent-green":"#c2e9b4",
+        "accent-orange":"#f6cf68",
       },
       backgroundImage : (theme)=>({
         "gradient-gradual":
