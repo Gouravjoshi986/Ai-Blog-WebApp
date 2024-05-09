@@ -7,7 +7,7 @@ import Footer from "./(Shared)/Footer";
 const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AiLog",
+  title: "Ai Log",
   description: "Blog built in nextJs which uses Ai",
 };
 
