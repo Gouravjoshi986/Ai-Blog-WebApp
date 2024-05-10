@@ -47,7 +47,7 @@ export default async function Home() {
       <div className="md:flex gap-10 mb-5">
         <div className="basis-3/4">
           <Tech techPosts={techPosts}/>
-          <Travel/>
+          <Travel travelPosts={travelPosts} />
           <Other/>
           <div className="hidden md:block">
             <Subscribe/>
