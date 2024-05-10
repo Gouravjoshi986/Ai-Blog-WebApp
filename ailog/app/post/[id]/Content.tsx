@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import SocialLinks from "@/app/(shared)/SocialLinks";
 
+import { Editor, EditorContent, useEditor } from '@tiptap/react'
+import StarterKit from "@tiptap/starter-kit"
+
 type Props = {
   post: FormattedPost;
 };
@@ -25,6 +28,7 @@ const Content = ({ post }: Props) => {
 
   const handleIsEditable = (bool: boolean) => {
     setIsEditable(bool);
+    editor?.setEditable(bool);
   };
 
   const handleOnChangeTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -32,11 +36,31 @@ const Content = ({ post }: Props) => {
     setTitle(e.target.value);
   };
 
+  const handleOnChangeContent = ({ editor }: any) => {
+    if (!(editor as Editor).isEmpty) setContentError("");
+    setContent((editor as Editor).getHTML());
+  };
+
+  const editor = useEditor({
+    extensions: [StarterKit],
+    onUpdate: handleOnChangeContent,
+    editorProps: {
+      attributes: {
+        class:
+          "prose prose-sm xl:prose-2xl leading-8 focus:outline-none w-full max-w-full",
+      },
+    },
+    content: content,
+    editable: isEditable,
+  });
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // validation checks
     if (title === "") setTitleError("This field is required.");
+    if (editor?.isEmpty) setContentError("This field is required.");
+    if (title === "" || editor?.isEmpty) return;
 
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/post/${post?.id}`,
@@ -59,6 +83,7 @@ const Content = ({ post }: Props) => {
 
     setTitle(data.title);
     setContent(data.content);
+    editor?.commands.setContent(data.content);
   };
 
   return (
@@ -67,7 +92,7 @@ const Content = ({ post }: Props) => {
       <h5 className="text-wh-300">{`Home > ${post.category} > ${post.title}`}</h5>
 
       {/* CATEGORY AND EDIT */}
-
+    
       <form onSubmit={handleSubmit}>
         {/* HEADER */}
         <>
@@ -107,7 +132,7 @@ const Content = ({ post }: Props) => {
         </div>
 
         {/* ARTICLE */}
-        
+
         {/* SUBMIT BUTTON */}
         {isEditable && (
           <div className="flex justify-end">
