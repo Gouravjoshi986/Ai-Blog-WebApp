@@ -3,9 +3,10 @@ import { FormattedPost } from "@/app/types";
 import React, { useState } from "react";
 import Image from "next/image";
 import SocialLinks from "@/app/(shared)/SocialLinks";
-
-import { Editor, EditorContent, useEditor } from '@tiptap/react'
-import StarterKit from "@tiptap/starter-kit"
+import { Editor,useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import CategoryAndEdit from "./CategoryAndEdit";
+import Article from "./Article";
 
 type Props = {
   post: FormattedPost;
@@ -92,7 +93,19 @@ const Content = ({ post }: Props) => {
       <h5 className="text-wh-300">{`Home > ${post.category} > ${post.title}`}</h5>
 
       {/* CATEGORY AND EDIT */}
-    
+      <CategoryAndEdit
+        isEditable={isEditable}
+        handleIsEditable={handleIsEditable}
+        title={title}
+        setTitle={setTitle}
+        tempTitle={tempTitle}
+        setTempTitle={setTempTitle}
+        tempContent={tempContent}
+        setTempContent={setTempContent}
+        editor={editor}
+        post={post}
+      />
+
       <form onSubmit={handleSubmit}>
         {/* HEADER */}
         <>
@@ -132,6 +145,13 @@ const Content = ({ post }: Props) => {
         </div>
 
         {/* ARTICLE */}
+        <Article
+          contentError={contentError}
+          editor={editor}
+          isEditable={isEditable}
+          setContent={setContent}
+          title={title}
+        />
 
         {/* SUBMIT BUTTON */}
         {isEditable && (
