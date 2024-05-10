@@ -34,9 +34,8 @@ const Card = ({
           <Image
             fill
             alt="tech"
-            // placeholder="blur"
-            // src={image}
-            src="/"
+            placeholder="blur"
+            src={image}
             sizes="(max-width: 480px) 100vw,
                   (max-width: 768px) 75vw,
                   (max-width: 1060px) 50vw,

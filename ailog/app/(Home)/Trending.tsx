@@ -18,9 +18,8 @@ const TrendingCard = ({ className,post}: TrendingCardProps) => {
         <Image
           fill
           alt="tech"
-        //   placeholder="blur"
-          src='/'
-        //   src={post?.image}
+          placeholder="blur"
+          src={post?.image}
           sizes="(max-width: 480px) 100vw,
                 (max-width: 768px) 75vw,
                 (max-width: 1060px) 50vw,
