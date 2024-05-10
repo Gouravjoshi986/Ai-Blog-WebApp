@@ -7,6 +7,8 @@ import Sidebar from './(Shared)/Sidebar'
 import client from '../prisma/ClientIndex'
 import { Post } from '@prisma/client'
 
+export const revalidate = 60;
+
 export async function getPost() {
   const posts:Array<Post> = await client.post.findMany();
   return posts;
@@ -44,7 +46,7 @@ export default async function Home() {
       <Trending trendingPosts={trendingPosts} />
       <div className="md:flex gap-10 mb-5">
         <div className="basis-3/4">
-          <Tech/>
+          <Tech techPosts={techPosts}/>
           <Travel/>
           <Other/>
           <div className="hidden md:block">
