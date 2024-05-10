@@ -48,7 +48,7 @@ export default async function Home() {
         <div className="basis-3/4">
           <Tech techPosts={techPosts}/>
           <Travel travelPosts={travelPosts} />
-          <Other/>
+          <Other otherPosts={otherPosts}/>
           <div className="hidden md:block">
             <Subscribe/>
           </div>
