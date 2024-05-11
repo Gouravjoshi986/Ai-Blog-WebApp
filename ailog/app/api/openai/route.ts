@@ -1,12 +1,11 @@
-import { NextResponse } from "next/server";
+import { NextResponse,NextRequest } from "next/server";
 import {  OpenAI } from "openai";
-import { AxiosResponse } from "axios";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export async function POST(request: Request, response: any) {
+export async function POST(request:NextRequest,response: NextResponse) {
   try {
     const { title, role } = await request.json();
 

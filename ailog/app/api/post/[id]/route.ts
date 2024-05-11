@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import client from "../../../ClientIndex";
 
-type Params = { params: { id: string } };
+type Params = { 
+  params: { id: string }; 
+};
 
 export async function PATCH(request: Request, { params }: Params) {
   try {

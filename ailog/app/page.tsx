@@ -14,7 +14,7 @@ const getPosts = async () => {
   const posts = await client.post.findMany();
 
   const formattedPosts = await Promise.all(
-    posts.map(async (post: Post) => {
+    posts.map(async (post) => {
       const imageModule = require(`../public${post.image}`);
       return {
         ...post,
