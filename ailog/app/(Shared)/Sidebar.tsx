@@ -5,9 +5,7 @@ import Subscribe from "./Subscribe";
 import Ad2 from "../../public/assets/ad-2.png";
 import AboutProfile from "../../public/assets/about-profile.jpg";
 
-type Props = {};
-
-const Sidebar = (props: Props) => {
+export default function Sidebar(){
   return (
     <section>
       <h4 className="bg-wh-900 py-3 px-5 text-wh-50 text-xs font-bold text-center">
@@ -46,5 +44,3 @@ const Sidebar = (props: Props) => {
     </section>
   );
 };
-
-export default Sidebar;

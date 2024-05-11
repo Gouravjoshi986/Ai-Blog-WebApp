@@ -1,7 +1,7 @@
 "use client";
-import { FormattedPost } from "@/app/types";
+import { FormattedPost } from "../../types";
 import React, { useState } from "react";
-import Image from "next/image";
+import Image from 'next/image'
 import SocialLinks from "../../(Shared)/SocialLinks";
 import { Editor,useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -168,7 +168,7 @@ const Content = ({ post }: Props) => {
 
       {/* SOCIAL LINKS */}
       <div className="hidden md:block mt-10 w-1/3">
-        <SocialLinks isDark />
+        <SocialLinks isDark/>
       </div>
     </div>
   );

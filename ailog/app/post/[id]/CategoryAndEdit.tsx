@@ -1,4 +1,4 @@
-import { FormattedPost } from "@/app/types";
+import { FormattedPost } from "../../types";
 import { Editor } from "@tiptap/react";
 import React from "react";
 import { XMarkIcon, PencilSquareIcon } from "@heroicons/react/24/solid";
