@@ -1,9 +1,9 @@
-import client from "../../../prisma/ClientIndex";
+import client from "../../ClientIndex";
 import React from "react";
 import { Post as PostType } from "@prisma/client";
 import { FormattedPost } from "../../types";
-import Sidebar from "@/app/(shared)/Sidebar";
-import Content from './Content';
+import Sidebar from "../../(Shared)/Sidebar";
+import Content from "./Content";
 
 type Props = {
   params: { id: string };
@@ -30,7 +30,7 @@ const getPost = async (id: string) => {
   return formattedPost;
 };
 
-const Post = async ({ params }: Props) => {
+export default async function Post({ params }: Props){
   const { id } = params;
   const post: FormattedPost | null = await getPost(id);
 
@@ -52,4 +52,3 @@ const Post = async ({ params }: Props) => {
   );
 };
 
-export default Post;

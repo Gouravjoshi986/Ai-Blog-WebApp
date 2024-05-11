@@ -2,7 +2,7 @@
 import { FormattedPost } from "@/app/types";
 import React, { useState } from "react";
 import Image from "next/image";
-import SocialLinks from "@/app/(shared)/SocialLinks";
+import SocialLinks from "../../(Shared)/SocialLinks";
 import { Editor,useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import CategoryAndEdit from "./CategoryAndEdit";

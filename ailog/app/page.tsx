@@ -1,16 +1,17 @@
-import Trending from './(Home)/Trending'
-import Tech from './(Home)/Tech'
-import Travel from './(Home)/Travel'
-import Other from './(Shared)/Other'
-import Subscribe from './(Shared)/Subscribe'
-import Sidebar from './(Shared)/Sidebar'
-import client from '../prisma/ClientIndex'
-import { Post } from '@prisma/client'
+
+import Trending from "./(Home)/Trending";
+import Tech from "./(Home)/Tech";
+import Travel from "./(Home)/Travel";
+import Other from "./(Shared)/Other";
+import Subscribe from "./(Shared)/Subscribe";
+import Sidebar from "./(Shared)/Sidebar";
+import client from "./ClientIndex";
+import { Post } from "@prisma/client";
 
 export const revalidate = 60;
 
-export async function getPost() {
-  const posts:Array<Post> = await client.post.findMany();
+const getPosts = async () => {
+  const posts = await client.post.findMany();
 
   const formattedPosts = await Promise.all(
     posts.map(async (post: Post) => {
@@ -23,10 +24,10 @@ export async function getPost() {
   );
 
   return formattedPosts;
-}
+};
 
 export default async function Home() {
-  const posts = await getPost();
+  const posts = await getPosts();
 
   const formatPosts = () => {
     const trendingPosts: Array<Post> = [];
@@ -57,15 +58,15 @@ export default async function Home() {
       <Trending trendingPosts={trendingPosts} />
       <div className="md:flex gap-10 mb-5">
         <div className="basis-3/4">
-          <Tech techPosts={techPosts}/>
+          <Tech techPosts={techPosts} />
           <Travel travelPosts={travelPosts} />
-          <Other otherPosts={otherPosts}/>
+          <Other otherPosts={otherPosts} />
           <div className="hidden md:block">
-            <Subscribe/>
+            <Subscribe />
           </div>
         </div>
         <div className="basis-1/4">
-          <Sidebar/>
+          <Sidebar />
         </div>
       </div>
     </main>

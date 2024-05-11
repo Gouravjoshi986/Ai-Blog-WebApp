@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import client from "../../../../prisma/ClientIndex";
+import client from "../../../ClientIndex";
 
 type Params = { params: { id: string } };
 

@@ -1,4 +1,4 @@
-import client from './ClientIndex'
+import client from '../app/ClientIndex'
 
 const posts = [
     {
