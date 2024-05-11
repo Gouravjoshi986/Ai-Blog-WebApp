@@ -31,7 +31,7 @@ const Article = ({
       .setContent("Generating Ai Content. Please Wait...")
       .run();
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/openai`, {
+    const response = await fetch(`http://localhost:3000/api/openai`,{
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -40,7 +40,7 @@ const Article = ({
       }),
     });
     const data = await response.json();
-
+    
     editor.chain().focus().setContent(data.content).run();
     setContent(data.content);
   };
