@@ -2,21 +2,19 @@ import { NextResponse,NextRequest } from "next/server";
 import {  OpenAI } from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.SECRET_OPENAI_API_KEY,
 });
 
-export async function POST(request:NextRequest,response: NextResponse) {
+export async function POST(request:NextRequest) {
   try {
     const { title, role } = await request.json();
 
-    const aiResponse:OpenAI.Chat.Completions.ChatCompletion =
-      await openai.chat.completions.create({
+    const aiResponse = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
           {
             role: "user",
-            // content: `Create small blog post with html tags based on this title: ${title}`,
-            content: `Create 1 line blog post with html tags based on this title: ${title}`,
+            content: `Create 3 line blog post with html tags based on this title: ${title}`,
           },
           {
             role: "system",
