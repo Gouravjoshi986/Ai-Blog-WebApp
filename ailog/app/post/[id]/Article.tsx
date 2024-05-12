@@ -31,21 +31,26 @@ const Article = ({
       .setContent("Generating Ai Content. Please Wait...")
       .run();
 
-    const response = await fetch(`http://localhost:3000/api/openai`,{
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/openai`,{
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.SECRET_OPENAI_API_KEY}`,
+        "Authorization": `Bearer ${process.env.SECRET_OPENAI_API_KEY}`
       },
       body: JSON.stringify({
         title: title,
         role: role,
       }),
     });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
     const data = await response.json();
 
-    editor.chain().focus().setContent(data.content).run();
-    setContent(data.content);
+    editor.chain().focus().setContent(data.data).run();
+    setContent(data.data);
   };
 
   return (

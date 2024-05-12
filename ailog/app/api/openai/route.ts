@@ -14,13 +14,15 @@ export async function POST(request:NextRequest) {
         messages: [
           {
             role: "user",
-            content: `Create 3 line blog post with html tags based on this title: ${title}`,
+            content: `Create 3 line blog post with html tags based on this title:${title} `,
+            
           },
           {
             role: "system",
             content: `${
               role || "I am a helpful assistant"
             }. Write with html tags.`,
+            
           },
         ],
       });
@@ -28,7 +30,7 @@ export async function POST(request:NextRequest) {
     // response.revalidate("/api/posts")
     return NextResponse.json(
       {
-        content: aiResponse.choices[0].message?.content,
+        data: aiResponse.choices[0].message?.content,
       },
       { status: 200 }
     );
